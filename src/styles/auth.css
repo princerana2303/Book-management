@@ -1,0 +1,647 @@
+/*
+======================================================
+AUTHENTICATION PAGE STYLES
+======================================================
+
+This file contains shared styles for:
+
+- Login page
+- Register page
+
+Used by:
+
+- src/pages/Login.jsx
+- src/pages/Register.jsx
+
+Features:
+
+- Centered authentication layout
+- Clean card UI
+- Error / success messages
+- Loading spinner
+- Login progress bar
+- Beautiful gradient background with floating shapes
+*/
+
+
+/* --------------------------------------------------
+AUTH PAGE WRAPPER
+-------------------------------------------------- */
+
+/*
+Centers the authentication card
+vertically and horizontally
+*/
+
+.auth-page {
+
+  min-height: calc(100vh - 70px);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow: hidden;
+
+}
+
+/* Animated background elements */
+.auth-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.auth-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  animation: float 6s ease-in-out infinite;
+}
+
+.auth-shape-1 {
+  width: 80px;
+  height: 80px;
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.auth-shape-2 {
+  width: 60px;
+  height: 60px;
+  top: 20%;
+  right: 15%;
+  animation-delay: 2s;
+}
+
+.auth-shape-3 {
+  width: 100px;
+  height: 100px;
+  bottom: 20%;
+  left: 20%;
+  animation-delay: 4s;
+}
+
+.auth-shape-4 {
+  width: 70px;
+  height: 70px;
+  bottom: 10%;
+  right: 10%;
+  animation-delay: 1s;
+}
+
+.auth-shape-5 {
+  width: 90px;
+  height: 90px;
+  top: 50%;
+  left: 50%;
+  animation-delay: 3s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+/* --------------------------------------------------
+AUTH CARD
+-------------------------------------------------- */
+
+/*
+White card that holds login/register form
+*/
+
+.auth-card {
+
+  width: 100%;
+
+  max-width: 420px;
+
+  background: rgba(255, 255, 255, 0.86);
+
+  padding: 36px 36px;
+
+  border-radius: 24px;
+
+  box-shadow: 0 35px 80px rgba(15, 23, 42, 0.12);
+
+  border: 1px solid rgba(167, 139, 250, 0.18);
+
+  backdrop-filter: blur(12px);
+
+  position: relative;
+
+  z-index: 2;
+
+}
+
+.auth-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.35), rgba(16, 185, 129, 0.2));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.auth-brand span {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #4f46e5, #10b981);
+  color: white;
+  font-size: 24px;
+  box-shadow: 0 20px 40px rgba(79, 70, 229, 0.18);
+}
+
+.auth-brand h2 {
+  margin: 0;
+  font-size: 26px;
+  color: #111827;
+}
+
+.auth-brand p {
+  margin: 4px 0 0;
+  color: #475569;
+  font-size: 14px;
+}
+
+/* --------------------------------------------------
+FORM LAYOUT
+-------------------------------------------------- */
+
+/*
+Stack form fields vertically
+*/
+
+.auth-card form {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+
+}
+
+
+/* --------------------------------------------------
+INPUT FIELDS
+-------------------------------------------------- */
+
+.auth-card input {
+
+  padding: 14px 16px;
+
+  border-radius: 16px;
+
+  border: 1px solid rgba(148, 163, 184, 0.25);
+
+  font-size: 15px;
+
+  background: rgba(247, 250, 255, 0.9);
+
+  color: #0f172a;
+
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+
+}
+
+.auth-card input:hover {
+  transform: translateY(-1px);
+}
+
+/*
+Input focus state
+Improves accessibility and UX
+*/
+
+.auth-card input:focus {
+
+  outline: none;
+
+  border-color: rgba(79, 70, 229, 0.8);
+
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.12);
+
+}
+
+/* --------------------------------------------------
+ERROR MESSAGE
+-------------------------------------------------- */
+
+.auth-error {
+
+  background: #fee2e2;
+
+  color: #b91c1c;
+
+  padding: 10px 12px;
+
+  border-radius: 12px;
+
+  font-size: 13px;
+
+  text-align: center;
+
+  border: 1px solid rgba(239, 68, 68, 0.15);
+
+}
+
+/* --------------------------------------------------
+SUCCESS MESSAGE
+-------------------------------------------------- */
+
+.auth-success {
+
+  background: #dcfce7;
+
+  color: #166534;
+
+  padding: 10px 12px;
+
+  border-radius: 12px;
+
+  font-size: 13px;
+
+  text-align: center;
+
+  border: 1px solid rgba(16, 185, 129, 0.18);
+
+}
+
+/* --------------------------------------------------
+BUTTON STYLING
+-------------------------------------------------- */
+
+.auth-card .btn {
+
+  width: 100%;
+
+  padding: 14px 16px;
+
+  font-size: 15px;
+
+  border-radius: 16px;
+
+  border: none;
+
+  cursor: pointer;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  box-shadow: 0 12px 30px rgba(79, 70, 229, 0.18);
+
+}
+
+.auth-card .btn:hover {
+  transform: translateY(-2px);
+}
+
+.auth-card .btn-primary {
+
+  background: linear-gradient(135deg, #4f46e5, #10b981);
+
+  color: white;
+
+}
+
+.auth-card .btn-primary:disabled {
+
+  opacity: 0.65;
+
+  cursor: not-allowed;
+
+  box-shadow: none;
+
+}
+
+/* --------------------------------------------------
+LOGIN PROGRESS BAR
+-------------------------------------------------- */
+
+/*
+Displayed while login request is processing
+*/
+
+.progress-bar-container {
+
+  width: 100%;
+
+  height: 5px;
+
+  background: rgba(226, 232, 240, 0.8);
+
+  border-radius: 999px;
+
+  margin-bottom: 18px;
+
+  overflow: hidden;
+
+}
+
+/*
+Animated progress indicator
+*/
+
+.progress-bar {
+
+  height: 100%;
+
+  background: linear-gradient(90deg, #4f46e5, #10b981);
+
+  transition: width 0.3s ease;
+
+}
+
+/* --------------------------------------------------
+LOADING SPINNER
+-------------------------------------------------- */
+
+/*
+Spinner shown inside login button
+*/
+
+.spinner {
+
+  width: 14px;
+
+  height: 14px;
+
+  border: 2px solid white;
+
+  border-top: 2px solid transparent;
+
+  border-radius: 50%;
+
+  display: inline-block;
+
+  margin-right: 8px;
+
+  animation: spin 0.6s linear infinite;
+
+}
+
+
+/* --------------------------------------------------
+SPINNER ANIMATION
+-------------------------------------------------- */
+
+@keyframes spin {
+
+  from {
+
+    transform: rotate(0deg);
+
+  }
+
+  to {
+
+    transform: rotate(360deg);
+
+  }
+
+}
+
+
+/* --------------------------------------------------
+PAGE TITLE
+-------------------------------------------------- */
+
+.auth-card h2 {
+
+  text-align: center;
+
+  margin-bottom: 20px;
+
+  font-size: 24px;
+
+  color: #222;
+
+}
+
+
+/* --------------------------------------------------
+FORM LAYOUT
+-------------------------------------------------- */
+
+/*
+Stack form fields vertically
+*/
+
+.auth-card form {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 14px;
+
+}
+
+
+/* --------------------------------------------------
+INPUT FIELDS
+-------------------------------------------------- */
+
+.auth-card input {
+
+  padding: 10px 12px;
+
+  border-radius: 6px;
+
+  border: 1px solid #d0d5dd;
+
+  font-size: 14px;
+
+}
+
+
+/*
+Input focus state
+Improves accessibility and UX
+*/
+
+.auth-card input:focus {
+
+  outline: none;
+
+  border-color: #4f46e5;
+
+  box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.15);
+
+}
+
+
+/* --------------------------------------------------
+ERROR MESSAGE
+-------------------------------------------------- */
+
+.auth-error {
+
+  background: #fee2e2;
+
+  color: #b91c1c;
+
+  padding: 8px 10px;
+
+  border-radius: 6px;
+
+  font-size: 13px;
+
+  text-align: center;
+
+}
+
+
+/* --------------------------------------------------
+SUCCESS MESSAGE
+-------------------------------------------------- */
+
+.auth-success {
+
+  background: #dcfce7;
+
+  color: #166534;
+
+  padding: 8px 10px;
+
+  border-radius: 6px;
+
+  font-size: 13px;
+
+  text-align: center;
+
+}
+
+
+/* --------------------------------------------------
+BUTTON STYLING
+-------------------------------------------------- */
+
+.auth-card .btn {
+
+  width: 100%;
+
+  padding: 10px;
+
+  font-size: 14px;
+
+}
+
+
+/* --------------------------------------------------
+LOGIN PROGRESS BAR
+-------------------------------------------------- */
+
+/*
+Displayed while login request is processing
+*/
+
+.progress-bar-container {
+
+  width: 100%;
+
+  height: 4px;
+
+  background: #e5e7eb;
+
+  border-radius: 4px;
+
+  margin-bottom: 12px;
+
+  overflow: hidden;
+
+}
+
+
+/*
+Animated progress indicator
+*/
+
+.progress-bar {
+
+  height: 100%;
+
+  background: #4f46e5;
+
+  transition: width 0.3s ease;
+
+}
+
+
+/* --------------------------------------------------
+LOADING SPINNER
+-------------------------------------------------- */
+
+/*
+Spinner shown inside login button
+*/
+
+.spinner {
+
+  width: 14px;
+
+  height: 14px;
+
+  border: 2px solid white;
+
+  border-top: 2px solid transparent;
+
+  border-radius: 50%;
+
+  display: inline-block;
+
+  margin-right: 8px;
+
+  animation: spin 0.6s linear infinite;
+
+}
+
+
+/* --------------------------------------------------
+SPINNER ANIMATION
+-------------------------------------------------- */
+
+@keyframes spin {
+
+  from {
+
+    transform: rotate(0deg);
+
+  }
+
+  to {
+
+    transform: rotate(360deg);
+
+  }
+
+}
