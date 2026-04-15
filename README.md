@@ -187,7 +187,7 @@ Expected output:
 
 ```
 VITE ready
-Local: http://localhost:5173
+Local: http://localhost:5174/
 ```
 
 ---
