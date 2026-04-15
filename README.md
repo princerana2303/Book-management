@@ -238,7 +238,7 @@ Frontend
  http://localhost:5174/
 
 Backend  
-book-management-jrnp.vercel.app
+[book-management-jrnp.vercel.app](https://book-management-jrnp.vercel.app/api/auth)
 
 ---
 
