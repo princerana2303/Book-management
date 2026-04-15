@@ -235,17 +235,17 @@ Local: http://localhost:5173
 # 🌍 Live Deployment
 
 Frontend  
-https://mern-stack-client-app.vercel.app
+ http://localhost:5174/
 
 Backend  
-https://mern-stack-server-app-nischalaremanda.onrender.com
+book-management-jrnp.vercel.app
 
 ---
 
 # 👨‍💻 Author
 
-**Nischal Aremanda**  
-Full Stack Developer  
+** Prince Rana **  
+Full Stack Web Developer  
 
 Tech Interests:
 - React
